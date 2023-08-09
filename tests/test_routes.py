@@ -21,6 +21,7 @@ DATABASE_URI = os.getenv(
 BASE_URL = "/accounts"
 HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 
+
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
@@ -36,7 +37,6 @@ class TestAccountService(TestCase):
         app.logger.setLevel(logging.CRITICAL)
         init_db(app)
         talisman.force_https = False
-
 
     @classmethod
     def tearDownClass(cls):
@@ -200,11 +200,11 @@ class TestAccountService(TestCase):
             'Content-Security-Policy': 'default-src \'self\'; object-src \'none\'',
             'Referrer-Policy': 'strict-origin-when-cross-origin'
         }
-        for key, value in headers.items():            
+        for key, value in headers.items():
             self.assertEqual(response.headers.get(key), value)
 
     def test_cors_policies(self):
         """Check cors policies"""
         response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.headers.get("Access-Control-Allow-Origin"), "*")        
+        self.assertEqual(response.headers.get("Access-Control-Allow-Origin"), "*")
