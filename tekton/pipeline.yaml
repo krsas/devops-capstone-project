@@ -74,8 +74,8 @@ spec:
         name: buildah
         kind: ClusterTask
       params:
-      - name: build-image
-        value: "$(spec.params)"
-      runAfter: 
+      - name: IMAGE
+        value: "$(params.build-image)"
+      runAfter:
         - tests
         - lint
