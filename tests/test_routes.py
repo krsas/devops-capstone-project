@@ -135,7 +135,7 @@ class TestAccountService(TestCase):
         data = response.get_json()
         # assert that the len() of the data is 5 (the number of accounts you created)
         self.assertEqual(len(data), 5)
-    
+
     def test_read_an_account(self):
         """It should get an account"""
         account = self._create_accounts(1)[0]
@@ -146,10 +146,10 @@ class TestAccountService(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.get_json()
         self.assertEqual(data["name"], account.name)
-    
+
     def test_account_not_found(self):
         """It should return an error if the account is not found"""
-        account = self._create_accounts(1)[0]
+        self._create_accounts(1)[0]
         response = self.client.get(
             f"{BASE_URL}/{0}",
             content_type="application/json"
