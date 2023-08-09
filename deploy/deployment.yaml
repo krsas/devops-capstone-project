@@ -18,7 +18,7 @@ spec:
         app: accounts
     spec:
       containers:
-      - image: us.icr.io/sn-labs-saschakrause/accounts:1
+      - image: sha256:6f593c5c8d1e6fa125944c89a53fcba9d3668a4a6c0946f0e1dc79abcf2dc1c8image-registry.openshift-image-registry.svc:5000/sn-labs-saschakrause/accounts:1
         name: accounts
         resources: {}
 
